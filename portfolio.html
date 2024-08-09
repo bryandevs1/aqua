@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <!-- Metas -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="keywords" content="AquaEarth - Environmental Consultant" />
+    <meta name="description" content="AquaEarth - Environmental Consultant" />
+    <meta name="author" content="" />
+
+    <!-- Title  -->
+    <title>AquaEarth</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/imgs/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="assets/css/plugins.css" />
+
+    <!-- Core Style Css -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body class="home-arch main-bg">
+    <!-- ==================== Start Loading ==================== -->
+
+    <div class="loader-wrap">
+      <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path id="svg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+      </svg>
+
+      <div class="loader-wrap-heading">
+        <div class="load-text">
+          <span>A</span>
+          <span>Q</span>
+          <span>U</span>
+          <span>A</span>
+          <span>E</span>
+          <span>A</span>
+          <span>R</span>
+          <span>T</span>
+          <span>H</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== End Loading ==================== -->
+
+    <div class="cursor"></div>
+
+    <!-- ==================== Start progress-scroll-button ==================== -->
+
+    <div class="progress-wrap cursor-pointer">
+      <svg
+        class="progress-circle svg-content"
+        width="100%"
+        height="100%"
+        viewBox="-1 -1 102 102"
+      >
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+      </svg>
+    </div>
+
+    <!-- ==================== End progress-scroll-button ==================== -->
+
+    <!-- ==================== Start Navbar ==================== -->
+
+    <nav class="navbar navbar-expand-lg static">
+      <div class="container">
+        <!-- Logo -->
+        <div class="navlogo">
+          <a class="logo icon-img-100" href="index.html">
+            <img class="loggoo" src="assets/imgs/loggoo.png" alt="logo" />
+          </a>
+        </div>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="icon-bar"><i class="fas fa-bars"></i></span>
+        </button>
+
+        <!-- navbar links -->
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-toggle="dropdown"
+                href="/index.html"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                ><span class="rolling-text">Home</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html"
+                ><span class="rolling-text">About Us</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html"
+                ><span class="rolling-text">Services</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="portfolio.html"
+                ><span class="rolling-text">Portfolio</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html"
+                ><span class="rolling-text">Contact</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== End Navbar ==================== -->
+
+    <main>
+      <!-- ==================== Start Slider ==================== -->
+
+      <header class="work-header section-padding pb-0">
+        <div class="container mt-80">
+          <div class="row">
+            <div class="col-12">
+              <div class="caption">
+                <h6 class="sub-title">Our PORTFOLIO</h6>
+                <h1>FOOTPRINT.</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ==================== End Slider ==================== -->
+
+      <!-- ==================== Start Portfolio ==================== -->
+
+      <section class="portfolio section-padding pb-70">
+        <div class="container-xxl">
+          <div class="row">
+            <img src="assets/imgs/images/map.jpg" alt="map" />
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="caption jik">
+                <h1>RECENT PROJECTS.</h1>
+              </div>
+            </div>
+          </div>
+          <div class="gallery">
+            <div class="row masonry md-marg" id="portfolio-items">
+              <!-- Portfolio items will be inserted here -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        // Function to fetch portfolio data and generate HTML
+        async function loadPortfolio() {
+          try {
+            const response = await fetch("portfolio.json");
+            const portfolioItems = await response.json();
+            const portfolioContainer =
+              document.getElementById("portfolio-items");
+
+            portfolioItems.forEach((item, index) => {
+              const itemHtml = `
+          <div class="col-lg-4 col-md-6 items ${item.category} info-overlay mb-50">
+            <div class="item-img o-hidden">
+              <a href="project-details.html?id=${index}" class="imago wow">
+                <div class="inner wow">
+                  <img src="${item.image}" alt="image">
+                </div>
+              </a>
+              <div class="info vil">
+                <span class="mb-15">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.922 4.5V11.8125C13.922 11.9244 13.8776 12.0317 13.7985 12.1108C13.7193 12.1899 13.612 12.2344 13.5002 12.2344C13.3883 12.2344 13.281 12.1899 13.2018 12.1108C13.1227 12.0317 13.0783 11.9244 13.0783 11.8125V5.51953L4.79547 13.7953C4.71715 13.8736 4.61092 13.9176 4.50015 13.9176C4.38939 13.9176 4.28316 13.8736 4.20484 13.7953C4.12652 13.717 4.08252 13.6108 4.08252 13.5C4.08252 13.3892 4.12652 13.283 4.20484 13.2047L12.4806 4.92188H6.18765C6.07577 4.92188 5.96846 4.87743 5.88934 4.79831C5.81023 4.71919 5.76578 4.61189 5.76578 4.5C5.76578 4.38811 5.81023 4.28081 5.88934 4.20169C5.96846 4.12257 6.07577 4.07813 6.18765 4.07812H13.5002C13.612 4.07813 13.7193 4.12257 13.7985 4.20169C13.8776 4.28081 13.922 4.38811 13.922 4.5Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+                <h6 class="sub-title vil tag"><a href="project-details.html?id=${index}">${item.subtitle}</a></h6>
+                <h5><a href="project-details.html?id=${index}">${item.title}</a></h5>
+              </div>
+            </div>
+          </div>`;
+              portfolioContainer.innerHTML += itemHtml;
+            });
+          } catch (error) {
+            console.error("Error loading portfolio data:", error);
+          }
+        }
+
+        // Load portfolio items when the page loads
+        window.addEventListener("load", loadPortfolio);
+      </script>
+
+      <!-- ==================== End Portfolio ==================== -->
+    </main>
+
+    <!-- ==================== Start Footer ==================== -->
+
+    <footer>
+      <div class="footer-container">
+        <div class="container pb-80 pt-80 ontop">
+          <div class="row d-flex">
+            <div class="col-lg-3">
+              <div class="colum md-mb50">
+                <div class="tit mb-20">
+                  <h6>Address</h6>
+                </div>
+                <div class="text">
+                  <p class="whitee">
+                    5A1, Abeke Animashaun St, Lekki Pennisula, Lekki Phase 1,
+                    Lagos
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="colum md-mb50">
+                <div class="tit mb-20">
+                  <h6>Quick Links</h6>
+                </div>
+                <ul class="rest social-text">
+                  <li>
+                    <a class="whitee" href="/about.html">About Us</a>
+                  </li>
+                  <li>
+                    <a class="whitee" href="/services.html">Services</a>
+                  </li>
+                  <li>
+                    <a class="whitee" href="/about-us.html">Our Team</a>
+                  </li>
+                  <li>
+                    <a class="whitee" href="/portfolio.html">Portfolio</a>
+                  </li>
+                  <li>
+                    <a class="whitee" href="/contact.html">Contact Us</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="column md-mb50">
+                <div class="tit mb-20">
+                  <h6>Say Hello</h6>
+                </div>
+                <div class="text">
+                  <p class="mb-10">
+                    <a
+                      class="whitee"
+                      href="mailto:support@aquaearthconsulting.com"
+                      >support@aquaearthconsulting.com</a
+                    >
+                  </p>
+                  <h5 class="main-color underline">
+                    <a class="whitee" href="tel:2348099500695"
+                      >+234-809-950-0695</a
+                    >
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 md-mb50">
+              <div class="tit mb-20">
+                <h6>Social</h6>
+              </div>
+              <ul class="rest social-text">
+                <li>
+                  <a class="whitee" href="#0">Facebook</a>
+                </li>
+                <li>
+                  <a class="whitee" href="#0">Twitter</a>
+                </li>
+                <li>
+                  <a class="whitee" href="#0">LinkedIn</a>
+                </li>
+                <li>
+                  <a class="whitee" href="#0">Instagram</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-3">
+              <div class="tit mb-20">
+                <h6>Newsletter</h6>
+              </div>
+              <div class="subscribe">
+                <form action="contact.php">
+                  <div class="form-group rest">
+                    <input
+                      class="whitee"
+                      type="email"
+                      placeholder="Full Name"
+                    />
+                    <input type="email" placeholder="Email" />
+                    <button type="submit">
+                      <a>Submit</a>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sub-footer pt-40 pb-40 bord-thin-top ontop">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="logo">
+                  <a href="#0">
+                    <p class="whitte">
+                      AQUA<strong class="sepa">EARTH</strong>
+                    </p>
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="copyright d-flex">
+                  <div class="ml-auto">
+                    <p class="fz-13">© 2024 AquaEarth</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==================== End Footer ==================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+    <!-- Add this line for Isotope -->
+
+    <!-- jQuery -->
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-3.4.0.min.js"></script>
+
+    <!-- plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+
+    <!-- custom scripts -->
+    <script src="assets/js/scripts.js"></script>
+  </body>
+</html>
